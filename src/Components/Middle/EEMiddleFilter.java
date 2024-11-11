@@ -16,7 +16,6 @@ public class EEMiddleFilter extends CommonFilterImpl {
 		int byte_read = 0;
 
 		while (true) {
-			// check "CS" on byte_read from student information
 			while (byte_read != '\n' && byte_read != -1) {
 				byte_read = in.read();
 				if (byte_read == ' ')

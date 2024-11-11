@@ -5,6 +5,7 @@ package Framework;
 
 import Components.Middle.EEMiddleFilter;
 import Components.Middle.MiddleFilter;
+import Components.Middle.ThirteenMiddleFilter;
 import Components.Sink.SinkFilter;
 import Components.Source.SourceFilter;
 
@@ -33,13 +34,28 @@ public class LifeCycleManager {
             eeSourceFilter.connectOutputTo(eeMiddleFilter);
             eeMiddleFilter.connectOutputTo(eeSinkFilter);
             
-            Thread EEthread1 = new Thread(eeSourceFilter);
-            Thread EEthread2 = new Thread(eeSinkFilter);
-            Thread EEthread3 = new Thread(eeMiddleFilter);
+            Thread EESourceThread1 = new Thread(eeSourceFilter);
+            Thread EESinkThread2 = new Thread(eeSinkFilter);
+            Thread EEMiddleThread3 = new Thread(eeMiddleFilter);
             
-            EEthread1.start();
-            EEthread2.start();
-            EEthread3.start();
+            EESourceThread1.start();
+            EESinkThread2.start();
+            EEMiddleThread3.start();
+            ///////////////////////////////////////////////////////////////////////
+            CommonFilter SourceFilter13 = new SourceFilter("Students.txt");
+            CommonFilter SinkFilter13 = new SinkFilter("2013Output.txt");
+            CommonFilter MiddleFilter13 = new ThirteenMiddleFilter();
+            
+            SourceFilter13.connectOutputTo(MiddleFilter13);
+            MiddleFilter13.connectOutputTo(SinkFilter13);
+            
+            Thread thirteenSourceThread = new Thread(SourceFilter13);
+            Thread thirteenSinkThread = new Thread(SinkFilter13);
+            Thread thirteenMiddlethread = new Thread(MiddleFilter13);
+            
+            thirteenSourceThread.start();
+            thirteenSinkThread.start();
+            thirteenMiddlethread.start();
 
         } catch(Exception e) {
             e.printStackTrace();
