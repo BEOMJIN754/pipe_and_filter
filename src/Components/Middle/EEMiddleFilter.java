@@ -1,7 +1,9 @@
-package Framework;
+package Components.Middle;
 
 
 import java.io.IOException;
+
+import Framework.CommonFilterImpl;
 
 public class EEMiddleFilter extends CommonFilterImpl {
 	@Override
@@ -32,8 +34,6 @@ public class EEMiddleFilter extends CommonFilterImpl {
 				}
 				
 				student += "\n";
-					
-				System.out.println("Test: "+ student);
 				
 				byte[] sBuffer = student.getBytes();
 				out.write(sBuffer);

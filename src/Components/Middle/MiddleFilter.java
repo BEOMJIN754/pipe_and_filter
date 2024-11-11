@@ -39,8 +39,6 @@ public class MiddleFilter extends CommonFilterImpl {
 				
 				student += "\n";
 					
-				System.out.println("Test: "+ student);
-				
 				byte[] sBuffer = student.getBytes();
 				out.write(sBuffer);
 				isCS = false;

@@ -22,7 +22,7 @@ public class SinkFilter extends CommonFilterImpl{
             byte_read = in.read(); 
             if (byte_read == -1) {
             	 fw.close();
-                 System.out.print( "::Filtering is finished; Output file is created." );  
+                 System.out.println( "::Filtering is finished; Output file is created." );  
                  return true;
             }
             fw.write((char)byte_read);
