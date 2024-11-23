@@ -9,13 +9,12 @@ public class ThirteenMiddleFilter extends CommonFilterImpl implements CommonFilt
 
 	@Override
 	public boolean specificComputationForFilter() throws IOException {
-		int checkNumBlank = 1;
 		int checkCSBlank = 4;
 		int numOfBlank = 0;
 		int idx = 0;
 		byte[] buffer = new byte[128];
 		boolean isThirteen = false;
-		boolean isCS = false;
+		boolean is2013CS = false;
 		int byte_read = 0;
 
 		while (true) {
@@ -27,14 +26,14 @@ public class ThirteenMiddleFilter extends CommonFilterImpl implements CommonFilt
 					buffer[idx++] = (byte) byte_read;
 				if (idx >= 4 && buffer[0] == '2' && buffer[1] == '0' && buffer[2] == '1' && buffer[3] == '3') {
 					if(numOfBlank == checkCSBlank && buffer[idx-3] == 'C' && buffer[idx-2] == 'S')
-	                    isCS = true;
+	                    is2013CS = true;
 					else isThirteen = true;
 				}
 			}
-			if(isCS == true) {
+			if(is2013CS == true) {
                 for(int i = 0; i<idx; i++) 
                     out.write((char)buffer[i]);
-                isCS = false;
+                is2013CS = false;
             }
 			if(isThirteen == true) {
 				String student = new String(buffer, 0, idx).trim();
